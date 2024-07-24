@@ -1,90 +1,85 @@
-
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>REMISIÓN</title>
-		<link rel="stylesheet" href="https://fredyortegon30.github.io/invoice/style.css">
-		<link rel="license" href="https://www.opensource.org/licenses/mit-license/">
-	</head>
-	<body>
-		<header>
-			<h1>REMISIÓN</h1>
-			<address>
-				<p>MI EMPRESA</p>
-				<p>NIT 1111111111<br>Calle 11- 10-33</p>
-				<p>Pereira</p>
-			</address>
-
-<div style="float: right;">
-    <img alt="" src="https://acortar.link/caSNRS" style="width: 100px; height: 100px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
-</div>
-
-
-		</header>
-		<article>
-			<h1>Recipient</h1>
-			<address>
-				<p>&lt;&lt;[id_cliente].[Nombre_cliente]&gt;&gt;<br>-</p>
-                <p class="small-text"><br>Email: &lt;&lt;[id_cliente].[Email]&gt;&gt;</p>
-                <p class="small-text">Cel:&lt;&lt;[id_cliente].[Celular]&gt;&gt;</p>
-			</address>
-			<table class="meta">
-				<tr>
-					<th><span>Remisión #</span></th>
-					<td><span>&lt;&lt;[N_factura]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Fecha</span></th>
-					<td><span>&lt;&lt;[Fecha]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-			</table>
-			<table class="inventory">
-				<thead>
-					<tr>
-						<th><span>Producto</span></th>
-						<th><span>Descripcion</span></th>
-						<th><span>Valor ud</span></th>
-						<th><span>Cantidad</span></th>
-						<th><span>Subtotal</span></th>
-					</tr>
-				</thead>
-				<tbody>
-				<p><span>&lt;&lt;Start: SELECT(DETALLE_VENTAS[id_detalle],[id_encabezado_venta]=[id_encabezado]) &gt;&gt;</span></p>
-					<tr>
-						<td><a class="cut">-</a>&lt;&lt;[id_producto].[Nombre de producto]&gt;&gt;</td>
-						<td><span></span></td>
-				        <td><span>&lt;&lt;[Valor_unitario]&gt;&gt;</span></td>
-						<td><span>&lt;&lt;[Cantidad]&gt;&gt;</span></td>
-						<td><span>&lt;&lt;[Subtotal]&gt;&gt;</span></td>
-					</tr>
-				<p><span>&lt;&lt; end &gt;&gt;</span></p>
-				</tbody>
-			</table>
-			<a class="add">+</a>
-			<table class="balance">
-				<tr>
-					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Otros conceptos</span></th>
-					<td><span data-prefix="$"></span><span>0.00</span></td>
-				</tr>
-				<tr>
-					<th><span>Total a pagar</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-			</table>
-		</article>
-		<aside>
-			<h1><span>Notas adicionales</span></h1>
-			<div>
-				<p>Pagos a la cuenta de ahorros bancolombia # </p>
-			</div>
-		</aside>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Keterangan Pemberian Sanksi</title>
+    <link rel="stylesheet" href="path/to/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>PEMERINTAH KOTA KENDARI</h1>
+        <h2>DINAS PENDIDIKAN DAN KEBUDAYAAN</h2>
+        <h2>SMP NEGERI 6 KENDARI</h2>
+        <p>Jl. R.A Kartini No. 1 Kendari Telp. (0401) 3126889 web/blog <a href="http://smpn6kendari.wordpress.com">smpn6kendari.wordpress.com</a></p>
+        <h2>KETERANGAN PEMBERIAN SANKSI</h2>
+    </div>
+    <div class="content">
+        <p>Nama Siswa: <strong>&lt;&lt;[Nama Siswa]&gt;&gt;</strong></p>
+        <p>Kelas: <strong>&lt;&lt;[Kelas]&gt;&gt;</strong></p>
+        <p>Kategori Pelanggaran: <strong>&lt;&lt;[Jenis Pelanggaran]&gt;&gt;</strong></p>
+        <p>Sanksi Pelanggaran: <strong>&lt;&lt;[Sanksi Pelanggaran]&gt;&gt;</strong></p>
+        <h3>Data Pelanggaran</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Jenis Pelanggaran</th>
+                    <th>Bobot</th>
+                </tr>
+            </thead>
+            <tbody>
+                &lt;&lt;Start: SELECT(Data Pelanggaran[DID], [Nama Siswa] = [_THISROW].[Nama Siswa])&gt;&gt;
+                <tr>
+                    <td>&lt;&lt;[Tanggal]&gt;&gt;</td>
+                    <td>&lt;&lt;[Jenis Pelanggaran]&gt;&gt;</td>
+                    <td>&lt;&lt;[Bobot]&gt;&gt;</td>
+                </tr>
+                &lt;&lt;End&gt;&gt;
+            </tbody>
+        </table>
+        <p>Total Bobot: <strong>&lt;&lt;LOOKUP([_THISROW].[Nama Siswa], "Data Siswa", "Nama Siswa", "Total Bobot")&gt;&gt;</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th class="center-align">Keterangan Tambahan</th>
+                    <th class="center-align">Dokumentasi Pemberian Sanksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left-align">&lt;&lt;[Keterangan]&gt;&gt;</td>
+                    <td class="center-align">
+                        <img src="&lt;&lt;[Bukti Pemberian Sanksi]&gt;&gt;" alt="Bukti Pemberian Sanksi" class="sanksi-image">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="signature">
+        <div>
+            <p>Kendari, <strong>&lt;&lt;[Tanggal]&gt;&gt;</strong></p>
+            <p>Mengetahui,</p>
+            <p>Siswa</p>
+            <br><br>
+            <p>_________________________</p>
+            <p>&lt;&lt;[Nama Siswa]&gt;&gt;</p>
+        </div>
+        <div>
+            <p>Guru BK</p>
+            <br><br>
+            <p>_________________________</p>
+            <p>Alimudin, S.Pd</p>
+            <p>NIP. 197502172006041005</p>
+        </div>
+        <div>
+            <p>Menyetujui,</p>
+            <p>Kepala Sekolah</p>
+            <br><br><br><br>
+            <p>_________________________</p>
+            <p>Drs. La Andi Pante, M.Pd</p>
+            <p>NIP. 19651231 198601 1 022</p>
+        </div>
+    </div>
+</body>
 </html>
